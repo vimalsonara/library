@@ -1,27 +1,20 @@
 const form = document.querySelector('.addForm');
+const popUpForm = document.querySelector('.popUp');
+const openBtn = document.querySelector('.newBook');
 
+// event listener to open modal
+openBtn.addEventListener('click', () => {
+    popUpForm.showModal();
+})
+
+// take user input & add book to library array
 form.addEventListener('submit', e => {
     e.preventDefault();
 
     addBookToLibrary();
     form.reset();
-    closeForm();
+    popUpForm.close();
 })
-
-
-const popUpForm = document.querySelector('.popUp');
-const openBtn = document.querySelector('.newBook');
-
-openBtn.addEventListener('click', () => {
-    popUpForm.showModal();
-})
-
-// close modal
-function closeForm() {
-    form.addEventListener('submit', () => {
-        popUpForm.close();
-    })
-}
 
 let library = [];
 
@@ -35,7 +28,7 @@ class Book {
 }
 
 
-// add book to libray
+// add book to libray & create book card using DOM
 function addBookToLibrary() {
     
     let bookTitle = form.title.value.trim();
@@ -46,7 +39,6 @@ function addBookToLibrary() {
     const newBook = new Book(bookTitle, bookAuthor, bookPages, isRead);
     library.push(newBook);
     createCard(newBook);
-    console.log(newBook);
 }
 
 
@@ -87,4 +79,4 @@ function createCard(item) {
     bookContainer.appendChild(bookCard);
 }
 
-
+// toggle read button
