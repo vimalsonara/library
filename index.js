@@ -1,6 +1,7 @@
 const form = document.querySelector('.addForm');
 const popUpForm = document.querySelector('.popUp');
 const openBtn = document.querySelector('.newBook');
+const bookContainer = document.querySelector('.book-container');
 
 // event listener to open modal
 openBtn.addEventListener('click', () => {
@@ -68,7 +69,7 @@ function createCard(item) {
 
     removeBtn.innerHTML = 'Remove';
     readBtn.classList.add('btn', 'isRead');
-    removeBtn.classList.add('btn');
+    removeBtn.classList.add('btn', 'remove');
 
     bookCard.classList.add('book');
     bookCard.appendChild(bookTitle);
@@ -80,3 +81,21 @@ function createCard(item) {
 }
 
 // toggle read button
+bookContainer.addEventListener('click', e => {
+    if(e.target.innerHTML === 'Read') {
+        e.target.classList.remove('btn-green');
+        e.target.innerHTML = 'Not Read';
+        e.target.classList.add('btn-red');
+    } else {
+        e.target.classList.remove('btn-red');
+        e.target.innerHTML = 'Read';
+        e.target.classList.add('btn-green');
+    }
+})
+
+// delete book
+bookContainer.addEventListener('click', e => {
+    if(e.target.classList.contains('remove')) {
+        e.target.parentElement.remove();
+    }
+})
