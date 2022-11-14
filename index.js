@@ -82,14 +82,16 @@ function createCard(item) {
 
 // toggle read button
 bookContainer.addEventListener('click', e => {
-    if(e.target.innerHTML === 'Read') {
-        e.target.classList.remove('btn-green');
-        e.target.innerHTML = 'Not Read';
-        e.target.classList.add('btn-red');
+    if(e.target.textContent === 'Read') {
+        const isRead = document.querySelector('.isRead');
+        isRead.classList.remove('btn-green');
+        isRead.innerHTML = 'Not Read';
+        isRead.classList.add('btn-red');
     } else {
-        e.target.classList.remove('btn-red');
-        e.target.innerHTML = 'Read';
-        e.target.classList.add('btn-green');
+        const isRead = document.querySelector('.isRead');
+        isRead.classList.remove('btn-red');
+        isRead.innerHTML = 'Read';
+        isRead.classList.add('btn-green');
     }
 })
 
