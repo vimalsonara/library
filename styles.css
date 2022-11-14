@@ -42,6 +42,7 @@ header {
     margin-right: auto;
     font-size: 1em;
     font-weight: bolder;
+    cursor: pointer;
 }
 
 .newBook button {
@@ -76,6 +77,10 @@ input {
 
 input:focus {
     outline: none;
+}
+
+#read:hover {
+    cursor: pointer;
 }
 
 .popUp {
@@ -137,4 +142,9 @@ input:focus {
 
 .btn-red {
     background: lightcoral;
+}
+
+.btn:hover {
+    border: 1px solid black;
+    cursor: pointer;
 }
