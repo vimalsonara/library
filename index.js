@@ -68,7 +68,7 @@ function createCard(item) {
     }
 
     removeBtn.innerHTML = 'Remove';
-    readBtn.classList.add('btn', 'isRead');
+    readBtn.classList.add('btn');
     removeBtn.classList.add('btn', 'remove');
 
     bookCard.classList.add('book');
@@ -78,22 +78,20 @@ function createCard(item) {
     bookCard.appendChild(readBtn);
     bookCard.appendChild(removeBtn);
     bookContainer.appendChild(bookCard);
+    
+    // toggle read button
+    readBtn.addEventListener('click', e => {
+        if(e.target.textContent === 'Read') {
+            readBtn.classList.remove('btn-green');
+            readBtn.classList.add('btn-red');
+            readBtn.innerHTML = 'Not Read';
+        } else {
+            readBtn.classList.remove('btn-red');
+            readBtn.classList.add('btn-green');
+            readBtn.innerHTML = 'Read';
+        }
+    })
 }
-
-// toggle read button
-bookContainer.addEventListener('click', e => {
-    if(e.target.textContent === 'Read') {
-        const isRead = document.querySelector('.isRead');
-        isRead.classList.remove('btn-green');
-        isRead.innerHTML = 'Not Read';
-        isRead.classList.add('btn-red');
-    } else {
-        const isRead = document.querySelector('.isRead');
-        isRead.classList.remove('btn-red');
-        isRead.innerHTML = 'Read';
-        isRead.classList.add('btn-green');
-    }
-})
 
 // delete book
 bookContainer.addEventListener('click', e => {
